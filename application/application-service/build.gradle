@@ -1,0 +1,12 @@
+apply plugin: 'io.spring.dependency-management'
+
+dependencies {
+    compile project(":entry-point-reactive-web")
+    compile project(":driver-adapter-mongo")
+    compile project(":domain-usecase")
+    compile project(":domain-model")
+    runtime('org.springframework.boot:spring-boot-devtools')
+    compile 'org.reactivecommons.utils:object-mapper-api:0.1.0'
+    compile('org.reactivecommons:domain-events-api:0.0.7-beta1')
+
+}

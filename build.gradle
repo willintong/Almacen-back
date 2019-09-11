@@ -1,0 +1,63 @@
+//plugins {
+//	id 'org.springframework.boot' version '2.1.8.RELEASE'
+//	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+//	id 'java'
+//}
+//
+//group = 'co.com.sofka.product'
+//version = '0.0.1-SNAPSHOT'
+//sourceCompatibility = '1.8'
+//
+//configurations {
+//	compileOnly {
+//		extendsFrom annotationProcessor
+//	}
+//}
+//
+//repositories {
+//	mavenCentral()
+//}
+//
+//dependencies {
+//	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
+//	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+//	compileOnly 'org.projectlombok:lombok'
+//	annotationProcessor 'org.projectlombok:lombok'
+//	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//	testImplementation 'io.projectreactor:reactor-test'
+//}
+/////////////////////
+
+buildscript {
+	ext {
+		springBootVersion = '2.1.8.RELEASE'
+		springCloudVersion = 'Greenwich.M1'
+	}
+	repositories {
+		mavenCentral()
+		maven { url "https://repo.spring.io/milestone" }
+		maven { url "https://repo.spring.io/snapshot" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+plugins {
+	id "org.sonarqube" version "2.6"
+	id "jacoco"
+}
+sonarqube {
+	properties {
+		property "sonar.projectName","ProductWillintong"
+		property "sonar.projectKey","ProductWillintong"
+		property "sonar.organization","sofkatest"
+		property "sonar.host.url","https://sonarcloud.io"
+		property "sonar.login","f8f47bf8f7eca8c5e373a47b5a05c884b3caa9f2"
+		property "sonar.java.source","1.6"
+		property "sonar.java.target","1.6"
+		property "sonar.jacoco.reportPaths","${buildDir}/jacoco/test.exec"
+	}
+}
+
+apply from: './main.gradle'

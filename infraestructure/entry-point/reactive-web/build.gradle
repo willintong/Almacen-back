@@ -1,0 +1,7 @@
+dependencies {
+
+    compile project(':domain-usecase')
+
+    compile('org.springframework.boot:spring-boot-starter-webflux')
+
+}
